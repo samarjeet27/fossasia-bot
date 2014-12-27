@@ -1,4 +1,5 @@
 from twisted.python import log
+import time
 
 class MessageLogger:
     """

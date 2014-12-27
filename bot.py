@@ -1,15 +1,16 @@
 # twisted imports
 from twisted.python import log
+from twisted.internet import reactor
 from Logbot import *
 # system imports
-import time, sys
+import sys
 
 if __name__ == '__main__':
     # initialize logging
     log.startLogging(sys.stdout)
     
     # log_bot_factory(channel_name, log_file, nick)
-    f = LogBotFactory('fossasia', 'fossasia_channel.log', 'fossasia-bot')
+    f = LogBotFactory('fossasia', 'fossasia_channel.log')
 
     # connect factory to this host and port
     reactor.connectTCP("irc.freenode.net", 6667, f)

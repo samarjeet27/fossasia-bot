@@ -66,8 +66,8 @@ class LogBot(irc.IRCClient):
             return
 
         # Otherwise check to see if it is a message directed at me
-        if msg.startswith(self.nickname + ":"):
-            msg = "%s: I am a log bot by samarjeet27" % user
+        if msg.startswith(self.nickname + ":") or self.nickname in msg:
+            msg = "%s: I am a log bot by https://github.com/samarjeet27" % user
             self.msg(channel, msg)
             self.logger.log("<%s> %s" % (self.nickname, msg))
 
@@ -92,4 +92,5 @@ class LogBot(irc.IRCClient):
         Generate an altered version of a nickname that caused a collision in an
         effort to create an unused related name for subsequent registration.
         """
-        return nickname + '_'
+        nickname = nickname+"_"
+        return nickname

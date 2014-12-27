@@ -8,7 +8,7 @@ if __name__ == '__main__':
     # initialize logging
     log.startLogging(sys.stdout)
     
-    # create factory protocol and application
+    # log_bot_factory(channel_name, log_file, nick)
     f = LogBotFactory('fossasia', 'fossasia_channel.log', 'fossasia-bot')
 
     # connect factory to this host and port

@@ -53,7 +53,21 @@ class LogBot(irc.IRCClient):
     def joined(self, channel):
         """This will get called when the bot joins the channel."""
         self.logger.log("[I have joined %s]" % channel)
-
+    
+    def kickedFrom(self, channel, kicker, message):
+        """This function is called, when bot is kicked out of the channel"""
+        """Bot logs information and reconnects to the channel"""
+        self.logger.log("[%s kicked me from %s - reason %s]" % (kicker, channel, message))
+        self.join(self.factory.channel)
+    
+    def topicUpdated(self, user, channel, newTopic):
+        """This function logs new topic to log"""
+        self.logger.log("[%s changed topic on %s to %s]" % (user,channel,newTopic))
+        
+    def userKicked(self, kickee, channel, kicker, message):
+        """When one of the users get kicked..."""
+        self.logger.log("[%s has been kicked from %s by %s with message: %s]" % (kickee,channel,kicker,message))
+    
     def privmsg(self, user, channel, msg):
         """This will get called when the bot receives a message."""
         user = user.split('!', 1)[0]

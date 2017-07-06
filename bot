@@ -8,11 +8,15 @@ from Logbot import *
 import sys
 
 if __name__ == '__main__':
-    # initialize logging
+    if (len(sys.argv) < 3):
+        print 'Usage: bot <nick@channel> <logfile> '
+        sys.exit()    # initialize logging
+
     log.startLogging(sys.stdout)
 
+    s = sys.argv[1].split('@')
     # log_bot_factory(channel_name, log_file, nick)
-    f = LogBotFactory('fossasia', 'fossasia_channel.log')
+    f = LogBotFactory(s[1], sys.argv[2], s[0])
 
     # connect factory to this host and port
     reactor.connectTCP("irc.freenode.net", 6667, f)

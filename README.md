@@ -1,4 +1,8 @@
-fossasia-bot
-===
+# irc-logger
 
-A bot which logs the fossasia channel for Google Code-In just to get some important information about tasks.
+Barebones IRC log bot
+
+## Usage
+```sh
+$ bot nick@channel <LOG FILE PATH>
+```
